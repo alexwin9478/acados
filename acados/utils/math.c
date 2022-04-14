@@ -45,6 +45,10 @@ double fmax(double a, double b)
 {
     return a > b ? a : b;
 }
+int isnan(float test) {
+    unsigned int mask = *(unsigned int *)(&test);
+    return ( (mask & 0x7F800000) == 0x7F800000 && (mask & 0x007FFFFF) != 0 );
+}
 #endif
 
 void dgemm_nn_3l(int m, int n, int k, double *A, int lda, double *B, int ldb, double *C, int ldc)
